@@ -10,11 +10,15 @@ function randomNubmerGenrator(min: number, max: number) {
 
 function RNGSequence(len: number, min: number, max: number) {
   const res: number[] = [];
-  for (let i = 0; i < len; i++) {
-    res.push(randomNubmerGenrator(min, max));
+  while (res.length < len) {
+    const rn = randomNubmerGenrator(min, max);
+    if (res.includes(rn)) {
+    continue;
+    }
+    res.push(rn);
   }
   return res;
 }
 
-const myArr = RNGSequence(100, 5, 10);
+const myArr = RNGSequence(10, 0, 100);
 console.log(myArr);
