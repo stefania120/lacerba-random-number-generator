@@ -9,6 +9,9 @@ function randomNubmerGenrator(min: number, max: number) {
 }
 
 function RNGSequence(len: number, min: number, max: number) {
+  if(len > max - min){
+    throw new Error(`Cannot find ${len} numbers between ${min} and ${max}`);
+  }
   const res: number[] = [];
   while (res.length < len) {
     const rn = randomNubmerGenrator(min, max);
@@ -20,5 +23,5 @@ function RNGSequence(len: number, min: number, max: number) {
   return res;
 }
 
-const myArr = RNGSequence(10, 0, 100);
+const myArr = RNGSequence(1000, 0, 1000);
 console.log(myArr);
