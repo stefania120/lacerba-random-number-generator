@@ -8,20 +8,15 @@ function randomNubmerGenrator(min: number, max: number) {
   return Math.trunc(randomNubmerGenrator * (max - min) + min);
 }
 
-function RNGSequence(len: number, min: number, max: number) {
-  if(len > max - min){
-    throw new Error(`Cannot find ${len} numbers between ${min} and ${max}`);
+function RNGDec( min: number, max: number, precision: number) {
+  if(precision < 0) {
+    throw new Error('precision must be a positive number');
   }
-  const res: number[] = [];
-  while (res.length < len) {
-    const rn = randomNubmerGenrator(min, max);
-    if (res.includes(rn)) {
-    continue;
-    }
-    res.push(rn);
+  if(!Number.isInteger(precision)) {
+    throw new Error('precision must be an integer number');
   }
-  return res;
+  const multFactor = Math.pow(10, precision);
+  return randomNubmerGenrator(min * multFactor, max * multFactor) / multFactor;
 }
 
-const myArr = RNGSequence(1000, 0, 1000);
-console.log(myArr);
+console.log(RNGDec(5, 10, 2)); 
