@@ -41,9 +41,32 @@ for (const ruota of ruote) {
   estrazioni[ruota] = estrazione;
 }
 
+function createRuotaCnt(ruotaName: string, estrazioni: number[]) {
+    const ruotaDiv = document.createElement("div");
+    ruotaDiv.className = "ruota";
+    const nameH2 = document.createElement("h2");
+    nameH2.innerText = ruotaName;
+    nameH2.className = "ruota-title";
+    ruotaDiv.appendChild(nameH2);
+
+  for(const num of estrazioni) {
+    const numP = document.createElement("p");
+    numP.innerText = "" + num;
+    numP.className = "ruota-estrazione";
+    ruotaDiv.appendChild(numP);
+  }    
+
+    return ruotaDiv;
+}
+
 const container = document.getElementById("cnt");
 if (container) {
   const pre = document.createElement("pre");
-  pre.innerText = JSON.stringify(estrazioni, null, 2);
-  container.appendChild(pre);
+
+  for(const ruota of ruote) {
+    const ruotaEstrazioni = estrazioni[ruota]!;
+    const ruotaDiv = createRuotaCnt(ruota, ruotaEstrazioni);
+    container.appendChild(ruotaDiv);
+  }
 }
+
