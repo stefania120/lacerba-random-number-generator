@@ -43,7 +43,7 @@ for (const ruota of ruote) {
 
 function createRuotaCnt(ruotaName: string, estrazioni: number[]) {
     const ruotaDiv = document.createElement("div");
-    ruotaDiv.className = "ruota";
+    ruotaDiv.className = `ruota ${ruotaName.toLowerCase()}`;
     const nameH2 = document.createElement("h2");
     nameH2.innerText = ruotaName;
     nameH2.className = "ruota-title";
@@ -52,8 +52,10 @@ function createRuotaCnt(ruotaName: string, estrazioni: number[]) {
   for(const num of estrazioni) {
     const numP = document.createElement("p");
     numP.innerText = "" + num;
-    numP.className = "ruota-estrazione";
-    ruotaDiv.appendChild(numP);
+    const numDiv = document.createElement("div");
+    numDiv.className = "ruota-estrazione";
+    numDiv.appendChild(numP);
+    ruotaDiv.appendChild(numDiv);
   }    
 
     return ruotaDiv;
