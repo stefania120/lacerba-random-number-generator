@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "module": "nodenext",
-    "target": "esnext",
+    "outDir": "./dist/",
+    "module": "nodenext", // backend "commonjs" or "nodenext", frontend "ESNext"
+    "target": "esnext",  
     "types": [],
     "sourceMap": true,
     "declaration": true,

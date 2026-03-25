@@ -24,20 +24,26 @@ const ruote = [
   "Bari",
   "Cagliari",
   "Firenze",
-  "Genova", 
-  "Milano", 
-  "Napoli", 
-  "Palermo", 
-  "Roma", 
-  "Torino", 
-  "Venezia", 
-  "Nazionale"];
+  "Genova",
+  "Milano",
+  "Napoli",
+  "Palermo",
+  "Roma",
+  "Torino",
+  "Venezia",
+  "Nazionale",
+];
 
-const estrazioni: {[ruoota: string]: number []} = {};
+const estrazioni: { [ruota: string]: number[] } = {};
 
 for (const ruota of ruote) {
   const estrazione = RNGSequence(5, 1, 100);
   estrazioni[ruota] = estrazione;
 }
 
-console.log(JSON.stringify(estrazioni, null, 2));
+const container = document.getElementById("cnt");
+if (container) {
+  const pre = document.createElement("pre");
+  pre.innerText = JSON.stringify(estrazioni, null, 2);
+  container.appendChild(pre);
+}
